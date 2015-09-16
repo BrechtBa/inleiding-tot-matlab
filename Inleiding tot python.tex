@@ -45,7 +45,7 @@ Python code kan opgeslagen worden in eenvoudige tekst bestanden met de extentie 
 Omdat Python vanuit een commandline interface zal worden aangeroepen is het interessant om een deftige console te installeren. \emph{ConEmu} is een open source console emulator met gelijkenissen aan \emph{bash} in Linux. Deze is te downloaden vanaf \url{http://sourceforge.net/projects/conemu/files/latest/download}. Simpelweg downloaden, unzippen in een folder naar keuze en klaar.
 
  	\section{Scripts}
-Omdat het telkens opnieuw invoeren van commando's achter elkaar niet zo praktisch is, is het interessant om een reeks commando's op te slaan in een script en dit uit te voeren. Open een teksteditor en typ \lstinline{print('Hello World!')} en sla het bestand op als \textsf{hello\_world.py}. Om het bestand uit te voeren open je een console, navigeer naar de locatie waar je het bestand hebt opgeslagen, typ \lstinline[language=bash]{python hello\_world.py} en druk op enter.
+Omdat het telkens opnieuw invoeren van commando's achter elkaar niet zo praktisch is, is het interessant om een reeks commando's op te slaan in een script en dit uit te voeren. Open een teksteditor en typ \lstinline{print('Hello World!')} en sla het bestand op als \textsf{hello\_world.py}. Om het bestand uit te voeren open je een console, navigeer naar de locatie waar je het bestand hebt opgeslagen, typ \lstinline[language=bash]{python hello_world.py} en druk op enter.
 
 Python heeft een aantal interessanten ingebouwde variabele types. Open een nieuw bestand, typ onderstaande commando's en sla het op als \textsf{variables.py}.
 \lstinputlisting{examples/variables.py}
@@ -69,10 +69,10 @@ In Python moet elk flow control element eindigen met een ":". De code binnen het
 Je kan over zowat elk datatype itereren. Een lus over een dictionary kan bijvoorbeeld op verschillende manieren. Ook itereren over verschillende variablen tegelijk is eenvoudig met de \lstinline{zip()} functie. Indien je itereert over een \emph{List} en de index van de variabelen wil gebruiken kan je de functie \lstinline{enumerate()} gebruiken:
 \lstinputlisting{examples/flow_control_advanced.py}
 
-Een set commando's die vaak op dezelfde manier gebruikt worden kan je groeperen in een functie. Een functie definieer je met het \lstinline{def} keywoord, gevolgd door de functie naam, de argument namen tussen haakjes en een dubbelpunt. Argumenten kunnen verplicht of optioneel zijn. voor optionele argumenten moet een default waarde opgegeven worden in de functie definitie. Alle verplichte argumenten moeten ook voor de optionle komen in de functie definitie. Wanneer een functie veel optionele argumenten heeft is het gemakkellijk om deze via naam-waarde paren op te geven, de volgorde is dan niet meer van belang:
+Een set commando's die vaak op dezelfde manier gebruikt worden kan je groeperen in een functie. Een functie definieer je met het \lstinline{def} keyword, gevolgd door de functie naam, de argument namen tussen haakjes en een dubbelpunt. Argumenten kunnen verplicht of optioneel zijn. voor optionele argumenten moet een default waarde opgegeven worden in de functie definitie. Alle verplichte argumenten moeten ook voor de optionle komen in de functie definitie. Wanneer een functie veel optionele argumenten heeft is het gemakkellijk om deze via naam-waarde paren op te geven, de volgorde is dan niet meer van belang:
 \lstinputlisting{examples/functions.py}
 Variabelen die binnen een functie gedefinieerd zijn bestaan ook enkel in de functie namespace. Bovenstaande code geeft dus een error omdat \lstinline{val} enkel in de functie namespace gedefinieerd is, niet in de globale namespace. Functies kunnen wel gebruik maken van variabelen in de globale namespace maar niet omgekeerd. Wanneer de bovenstaande code runt krijg je dan ook de volgende foutmelding:
-\begin{lstlisting}
+\begin{lstlisting}[language=bash]
 Traceback (most recent call last):
   File "C:\examples\functions.py", line 10, in <module>
     print(val)
@@ -80,11 +80,10 @@ NameError: name 'val' is not defined
 \end{lstlisting}
 
 	\section{Numpy en Matplotlib} 
-Er bestaan enorm veel modules waarin specifieke functie gedefinieerd zijn voor gebruik in Python. Twee voor Ingenieurs interessante modules zijn \emph{Numpy}, een lineair algebra module en \emph{Matplotlib} een module voor het maken van wetenschappelijke figuren van hoge kwaliteit. Voor beide kunnen onofficiele windows installers worden gedownload via \url{http://www.lfd.uci.edu/~gohlke/pythonlibs/#numpy} en \url{http://www.lfd.uci.edu/~gohlke/pythonlibs/#matplotlib}. Gewoon de binary kiezen die overeenkomt met jou systeem architectuur, downloaden en installeren.
-
+Er bestaan enorm veel modules waarin specifieke functie gedefinieerd zijn voor gebruik in Python. Twee voor Ingenieurs interessante modules zijn \emph{Numpy}, een lineair algebra module en \emph{Matplotlib} een module voor het maken van wetenschappelijke figuren van hoge kwaliteit. Wwindows installers kunnen worden gedownload via \url{http://sourceforge.net/projects/numpy/files/NumPy/} en \url{http://matplotlib.org/downloads.html}. Kies de binary kiezen die overeenkomt met jou systeem architectuur en python versie, downloaden en installeren. De meeste modules lopen steeds één versie achter op de laatste Python release, het kan dus interessant zijn om een iets oudere versie van Python te installeren.
 
 	\section{Object georiënteerd} 
 	
- 	\section{Modules}
+ 	\section{Eigen modules schrijven}
 
 \end{document}
