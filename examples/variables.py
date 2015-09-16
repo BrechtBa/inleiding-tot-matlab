@@ -14,10 +14,11 @@ print(C)
 # list
 D = [1,2,3]
 print(D)
+
 E = [1,'test',4,D]
 print(E)
-print(E[0])
-print(E[1])
+print(E[:2])
+print(E[-1])
 
 # dictionary
 F = {3:1, 5:'test', 'foo':'bar'}

@@ -13,8 +13,6 @@
             pdfauthor={Brecht Baeten},
             pdftitle={Inleiding to Python}]{hyperref}
 
-\graphicspath{{fig/}}
-
 \lstset{language=Python,basicstyle=\footnotesize\ttfamily,tabsize=4,breaklines=true,showstringspaces=false}
 
 \title{Inleiding tot Python}
@@ -25,12 +23,12 @@
 	\maketitle
 
 	\section{Wat is Python?}
-Python is een open source programmeer taal. Voor ingenieurstoepassingen of wetenschappelijke projecten is Python interessant aangezien er een aantal Python Modules bestaan die hier specifiek op gericht zijn. Deze modules maken het beheren van data of uitvoeren van complexe wiskundige algoritmes zeer eenvoudig, vandaar de populariteit. Python werkt volledig object georiënteerd, dit laat toe efficiente en leesbare code te schrijven. Het schijven van leesbare code is één van de hoekstenen van Python aangezien code veel vaker gelezen wordt dan geschreven. Python code hoeft ook niet gecompileerd te worden (althans niet door de gebruiker). Python is een geïnterpreteerde programmeertaal wat inhoud dat code rechtstreeks uitgevoerd kan worden zonder eerst te compileren. Een andere groot voordeel van Python boven bijvoorbeeld Matlab is dat het gratis is! Iedereen, wetenschappers, studenten, particulieren, grote of kleine bedrijven kan Python gratis downloaden en gebruiken. In veel Linux distributies word Python standaard meegeleverd wat zelfs de installatie overbodig maakt.
+Python is een open source programmeer taal. Voor ingenieurstoepassingen of wetenschappelijke projecten is Python interessant aangezien er een aantal Python modules bestaan die hier specifiek op gericht zijn. Deze modules maken het beheren van data of uitvoeren van complexe wiskundige algoritmes zeer eenvoudig, vandaar de populariteit. Python werkt volledig object georiënteerd, dit laat toe efficiente en leesbare code te schrijven. Het schijven van leesbare code is één van de hoekstenen van Python aangezien code veel vaker gelezen wordt dan geschreven. Python code hoeft ook niet gecompileerd te worden (althans niet door de gebruiker). Python is een geïnterpreteerde programmeertaal wat inhoud dat code rechtstreeks uitgevoerd kan worden zonder eerst te compileren. Een andere groot voordeel van Python boven bijvoorbeeld Matlab is dat het gratis is! Iedereen, wetenschappers, studenten, particulieren, grote of kleine bedrijven kan Python gratis downloaden en gebruiken. In veel Linux distributies word Python standaard meegeleverd wat zelfs de installatie overbodig maakt.
 
 	\section{Installatie in Windows}
 De nieuwste versie van Python kan worden gedownload via \url{https://www.python.org/downloads/}. Hier vind je de broncode en installer executables voor verschillende platformen. Downloaden, uitvoeren en klaar. Tijdens de installatie is het interessant om Python aan je Windows search path toe te voegen, zo kan je python steeds van in een command line interface openen. Het is ook interessant om de installatie locatie te veranderen naar bijvoorbeeld  "\textsf{C://python34}".
 
-Je kan nu al Python starten door op python.exe te klikken. Er opent een console waarin je python commando's kan invoeren (zie Figuur \ref{Python35_(64-bit)}). Typ hier bijvoorbeeld:
+Je kan nu al Python starten door op python.exe te klikken. Er opent een console waarin je python commando's kan invoeren (zie Figuur \ref{fig:Python34}). Typ hier bijvoorbeeld:
 \begin{lstlisting}
 print('Hello World!')
 \end{lstlisting}
@@ -38,9 +36,9 @@ print('Hello World!')
 Druk op enter en je hebt je eerste python commando uitgevoerd.
 \begin{figure}[ht]
 	\centering
-	\includegraphics[scale=0.5]{Python35_(64-bit)}
+	\includegraphics[scale=0.5]{fig/Python34}
 	\caption{Python console met eerste commando}
-	\label{Python35_(64-bit)}
+	\label{fig:Python34}
 \end{figure}
 
 Python code kan opgeslagen worden in eenvoudige tekst bestanden met de extentie "\textsf{.py}". Om deze te schrijven is een goede text editor met syntax highlighting aan te raden. In Windows is \emph{notepad++} een goed, open source alternatief met syntax highlighting voor Python en een groot aantal andere talen ingebouwd. \emph{notepad++} kan worden gedownload vanop \url{https://notepad-plus-plus.org/download/}.
@@ -61,8 +59,9 @@ of:
 \begin{lstlisting}
 A+B
 \end{lstlisting}
+Door 'Ctrl+Z' in te geven kan je nu Python afsluiten en terugkeren naar de command line interface.
 
-Zoals te merken in het voorgaande voorbeeld is Python zeer flexibel met data types. Zo kunnen een \emph{Integer} en een \emph{Float} met elkaar opgeteld worden en kan een \emph{List} elementen met verschillende datatypes bevatten. Een zeer interessante data type is het \emph{Dictionary} of \emph{dict}. Hierin kunnen key / value paren worden opgeslagen en terug opgeroepen. Zowat elke Python variabele kan een \emph{Dictionary} key zijn wat dit type zeer flexibel maakt.
+Zoals te merken in het voorgaande voorbeeld is Python zeer flexibel met data types. Zo kunnen een \emph{Integer} en een \emph{Float} met elkaar opgeteld worden en kan een \emph{List} elementen met verschillende datatypes bevatten. Een zeer interessante data type is het \emph{Dictionary} of \emph{dict}. Hierin kunnen key / value paren worden opgeslagen en terug opgeroepen. Zowat elke Python variabele kan een \emph{Dictionary} key zijn wat dit type zeer flexibel maakt. Het is interessant om even in te gaan op de manier van indexeren in Python. Een python \emph{List} start bij index 0. Het laatste element van een \emph{List} kan je oproepen met de index -1, het voorlaatste met index -2, enz. Je kan een deel van de lijst opvragen met behulp van de '\lstinline{:}' operator, de subset loopt dan van de index voor de '\lstinline{:}' tot (niet tot en met) de index erna. Indien er geen index voor of achter de '\lstinline{:}' staat zal de subset starten of eindigen bij respectievelijk het eerste of het laatste element.
 
 Het interessante aan elke programmeertaal is het maken van loops en voorwaarden: flow control. In python is dit zeer eenvoudig met behulp van \lstinline{for} lussen of \lstinline{if else} structuren:
 \lstinputlisting{examples/flow_control.py}
@@ -82,14 +81,34 @@ Traceback (most recent call last):
 NameError: name 'val' is not defined
 \end{lstlisting}
 
-	\section{Numpy en Matplotlib} 
-Er bestaan enorm veel modules waarin specifieke functie gedefinieerd zijn voor gebruik in Python. Twee voor Ingenieurs interessante modules zijn \emph{Numpy}, een lineair algebra module en \emph{Matplotlib} een module voor het maken van wetenschappelijke figuren van hoge kwaliteit. Wwindows installers kunnen worden gedownload via \url{http://sourceforge.net/projects/numpy/files/NumPy/} en \url{http://matplotlib.org/downloads.html}. Kies de binary kiezen die overeenkomt met jou systeem architectuur en python versie, downloaden en installeren. De meeste modules lopen steeds één versie achter op de laatste Python release, het kan dus interessant zijn om een iets oudere versie van Python te installeren.
+	\section{NumPy, SciPy en Matplotlib} 
+Er bestaan enorm veel modules waarin specifieke functie gedefinieerd zijn voor gebruik in Python. Twee voor Ingenieurs interessante modules zijn \emph{NumPy}, een lineair algebra module, \emph{SciPy}, een algemeen wetenschappelijke wiskunde module en \emph{Matplotlib}, een module voor het maken van wetenschappelijke figuren van hoge kwaliteit. Windows installers kunnen worden gedownload via \url{http://sourceforge.net/projects/numpy/files/NumPy/}, \url{http://sourceforge.net/projects/scipy/files/scipy/} en \url{http://matplotlib.org/downloads.html}. Kies de binary kiezen die overeenkomt met jou systeem architectuur en python versie, downloaden en installeren. De meeste modules lopen steeds één versie achter op de laatste Python release, het kan dus interessant zijn om een iets oudere versie van Python te installeren.
+
+Om een module te kunnen gebruiken in een script moet deze eerst geimporteerd worden. Dit gebeurt met een \lstinline{import} statement en kan op verschillende manieren. In Python blijft elke geimporteerde module zijn eigen namespace behouden. Je kan dus de \lstinline{linspace} funtie uit \emph{NumPy} aanroepen als \lstinline{numpy.linspace(...)}. Om de notatie wat te verkorten kan je een module importeren onder een zelf gekozen naam met \lstinline{import ... as ...} zoals aangegeven in het voorbeeld hieronder. Voor meer info over \emph{NumPy} of \emph{SciPy} wordt verwezen naar de online documentatie op \url{http://docs.scipy.org/doc/numpy/} en \url{http://docs.scipy.org/doc/scipy/reference/}
+
+\emph{Matplotlib} kan latex gebruiken om tekst weer te geven, dit kan permanent gedaan worden door de 'rc' parameters aan te passen in het \textsf{matplotlibrc} bestand of deze in het script zelf aan te passen zoals hieronder aangegeven. De grootte van de figuur wordt default in inch opgegeven vandaar dat een correctiefactor naar centimeter. Met behulp van de \lstinline{savefig} functie wordt de figuur opgeslagen als pdf (Figuur \ref{fig:sinus_cosinus}). Een zeer groot aantal voorbeelden van \emph{Matplotlib} figuren en de code gebruikt om ze te maken is terug te vinden op \url{http://matplotlib.org/gallery.html}.
+\lstinputlisting{examples/numpy_scipy_matplotlib.py}
+
+\begin{figure}[ht]
+	\centering
+	\includegraphics[scale=0.5]{examples/sinus_cosinus}
+	\caption{Matplotlib voorbeeld}
+	\label{fig:sinus_cosinus}
+\end{figure}
 
 	\section{Object georiënteerd} 
+Een grote sterkte van Python is de zeer grote Object gerichtheid van de programeertaal. Zowat alles in python is een object met zijn methodes en kan aangepast of gebruikt worden in child classes. Een klasse wordt in python gedefinieerd met het keyword \lstinline{class} gevolgd door de classenaam en een dubbelpunt. Opnieuw dient alles wat binnen de klasse definitie valt één tab verschoven te zijn tenopzichte van de klasse definitie. Binnen een klasse zijn er een aantal belangrijke methodes die kunnen gebruikt worden. De eerste is de \lstinline{__init__} methode. Deze wordt gebruikt om een object instance te creëren. Het eerste argument is steeds \lstinline{self}, dit wordt gebruikt om attributen aan de instance toe te kennen, verder kunnen de argumenten op dezelfde wijze als bij functies gedefineerd worden. De \lstinline{__} voor en na de methode definitie geven aan dat deze een ingebouwde functie heeft. In het voorbeeld hieronder worden ook de \lstinline{__str__} en \lstinline{__add__} methodes gedefinieerd die respectievelijk het printen van een vector en de som van 2 vectoren definieren. Telkens is \lstinline{self} het eerste argument om een referentie naar de huidige object instance te hebben.
+
+In het voorbeeld hieronder wordt ook een \lstinline{plot} methode gedefinieerd die gebruikt kan worden om de vector te plotten. Onmiddellijk na de definitie volgt een 'docstring' tussen drie aanhalingstekens \lstinline{"""}. Deze wordt weergegeven indien de de \lstinline{help} functie wordt opgeroepen, dit kan trouwens ook bij gewone functies. Het is een goede gewoonte om hier steeds te schijven wat de functie doet, wat ze returned en wat de argumenten betekenen. Een andere goede gewoonte is om methode's die bedoelt zijn om enkel binnen de klasse definitie te gebruiken te beginnen met een \lstinline{_}. Op die manier is het voor een gebruiker van de klasse meteen duidelijk dat deze methode niet voor hem of haar bedoeld is.
+\lstinputlisting{examples/object_oriented.py}
 	
  	\section{Eigen modules schrijven}
+Wanneer een project groeit komt er een moment dat het niet meer interessant is om alle code in één file the schrijven. In Python kan dit door het project op te delen in modules en deze in een hoofd bestand te importeren en aan te gebruiken. Een python module kan je definieren door in een folder een bestand \textsf{\_\_init\_\_.py} aan te maken. In dit bestand kan je code zetten die uitgevoerd dient te worden tijdens de initialisatie van de module, maar je kan deze ook gewoon leeg laten. Wanneer er een \textsf{\_\_init\_\_.py} in een folder staat kan je de verschillende files in die folder importeren via het \lstinline{import} commando zoals in het voorbeel hieronder. Wanneer je dit doet zullen alle commando's uit het geïmporteerde file uitgevoerd worden en de functie of klasse definities uit die file worden beschikbaar via de "\lstinline{.}" notatie. Je kan steeds kijken welke variabelen er gedefinieerd zijn in de huidige namespace met de "\lstinline{dir()}" functie.
 
+In het voorbeeld hieronder wordt ook een submodule uit de subfolder \textsf{mymodule} aangeroepen. Deze bevat een functie die opnieuw via de "\lstinline{.}" notatie kan worden gebruikt. Via de "\lstinline{dir(mymodule.submodule)}" functie kan je ook achterhalen welke functie allemaal gedefinieerd zijn in een bepaalde module.
 
+Door op deze manier een project goed te structureren blijft het geheel leesbaar en overzichtelijk.
+\lstinputlisting{examples/modules.py}	
 
 \null
 \vfill
