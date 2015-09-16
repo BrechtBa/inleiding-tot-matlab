@@ -21,6 +21,17 @@ print(E[:2])
 print(E[-1])
 
 # dictionary
-F = {3:1, 5:'test', 'foo':'bar'}
+F = {3:1, 5:'test', 'spam':'eggs'}
 print(F)
-print(F['foo'])
+print(F['spam'])
+
+# assignment by reference
+G = F
+G['spam'] = 'african swallow'
+print(F)
+print(G)
+
+H = dict(F)
+H['spam'] = 'european swallow'
+print(F)
+print(H)
