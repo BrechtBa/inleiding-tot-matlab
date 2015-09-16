@@ -36,19 +36,20 @@ class vector:
 		plt.plot([origin.x,origin.x+self.x],[origin.y,origin.y+self.y])
 		
 
-		
-help(vector.plot)
-		
-a = vector(1,4)
-b = vector(3,2)
 
-c = a+b
+if __name__ == '__main__':
+	help(vector.plot)
+			
+	a = vector(1,4)
+	b = vector(3,2)
 
-print(a)
-print(b)
-print(c)
+	c = a+b
 
-a.plot()
-b.plot(a)
-c.plot()
-plt.show()
+	print(a)
+	print(b)
+	print(c)
+
+	a.plot()
+	b.plot(a)
+	c.plot()
+	plt.show()
