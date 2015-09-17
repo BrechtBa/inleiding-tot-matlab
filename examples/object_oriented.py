@@ -1,13 +1,13 @@
 import matplotlib.pyplot as plt
 
 # class definition
-class vector:
+class Vector:
 	"""
 	A class defining a 2 dimensional vector
 	"""
 	def __init__(self,x,y):
 		"""
-		Returns a vector Instance
+		Returns a Vector Instance
 		
 		Arguments:
 		x: x coordinate of the vector
@@ -15,41 +15,38 @@ class vector:
 		"""
 		self.x = x
 		self.y = y
-
-		
+	
 	def __str__(self):
 		return '({},{})'.format(self.x,self.y)
 		
 	def __add__(self,v):
-		return vector(self.x+v.x,self.y+v.y)	
+		return Vector(self.x+v.x,self.y+v.y)	
 	
-	def plot(self,origin=None):
-		"""
-		Plots the vector from an optional origin
+	def magnitude(self):
+		return (self.x**2+self.y**2)**0.5
 		
-		Arguments:
-		optional = None: starting point of the vector
+	def plot(self):
 		"""
-		if origin == None:
-			origin = vector(0,0)
-			
-		plt.plot([origin.x,origin.x+self.x],[origin.y,origin.y+self.y])
+		Plots the vector
+		"""
+		plt.plot([0,self.x],[0,self.y])
 		
 
 
 if __name__ == '__main__':
-	help(vector.plot)
+	help(Vector.plot)
 			
-	a = vector(1,4)
-	b = vector(3,2)
+	a = Vector(1,4)
+	b = Vector(3,2)
 
 	c = a+b
 
 	print(a)
 	print(b)
 	print(c)
-
+	print(c.magnitude())
+	
 	a.plot()
-	b.plot(a)
+	b.plot()
 	c.plot()
 	plt.show()
