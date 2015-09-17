@@ -1,56 +1,43 @@
-import matplotlib.pyplot as plt
-from object_oriented import Vector
+from object_oriented import IdealGas
 
-
-# inheritance
-class LocalizedVector(Vector):
+class PerfectGas(IdealGas):
 	"""
-	A class defining a localized vector as a vector with an origin
+	A class defining a perfect gas as an ideal gas with constant cp
 	"""
-	def __init__(self,x,y,origin=None):
+	def __init__(self,name,R,cp):
 		"""
-		Returns a LocalizedVector Instance
+		Returns a PerfectGas Instance
 		
 		Arguments:
-		x: float, x coordinate of the vector
-		y: float, y coordinate of the vector
-		origin=None: Vector, origin of the vector
+		R: float, specific gas constant
+		cp: float, heat capacity at constant pressure
 		"""
-		Vector.__init__(self,x,y)
-		
-		if isinstance(origin,LocalizedVector):
-			self.origin = Vector(origin.origin.x+origin.x,origin.origin.y+origin.y)
-		elif isinstance(origin,Vector):
-			self.origin = origin
-		else:
-			self.origin = Vector(0,0)
-
+		IdealGas.__init__(self,name,R)
+		self.cp = cp
+		self.cv = self.cp-self.R
 		
 	def __str__(self):
-		return self.origin.__str__()+' -> ({},{})'.format(self.x,self.y)	
+		return super(PerfectGas,self).__str__() + ', cp={} J/kgK'.format(self.cp)
 		
-	def __add__(self,v):
-		return LocalizedVector(self.x+v.x,self.y+v.y,self.origin)
+	def du(self,dT):
+		"""
+		Returns the change in specific energy of the gas in J/kg
 		
-	def plot(self):
+		Arguments:
+		dT: float, temperature difference in K
 		"""
-		Plots the vector
-		"""
-		plt.plot([self.origin.x,self.origin.x+self.x],[self.origin.y,self.origin.y+self.y])
+		return self.cv*dT
+		
 	
 if __name__ == '__main__':
-	o = Vector(0,2)
-	a = LocalizedVector(1,4,o)
-	b = LocalizedVector(3,2,a)
 
-	c = a+b
+	a = IdealGas('air',287)
+	b = PerfectGas('air',287,1004)
 
 	print(a)
 	print(b)
-	print(c)
-	print(c.magnitude())
 	
-	a.plot()
-	b.plot()
-	c.plot()
-	plt.show()
+	print('rho = {:.3f} kg/m3'.format(a.density(101325,293.15)))
+	print('rho = {:.3f} kg/m3'.format(b.density(101325,293.15)))
+	
+	print('du = {:.2f} J/kg'.format(b.du(50)))

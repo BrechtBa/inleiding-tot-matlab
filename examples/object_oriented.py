@@ -1,52 +1,34 @@
-import matplotlib.pyplot as plt
-
-# class definition
-class Vector:
+class IdealGas(object):
 	"""
-	A class defining a 2 dimensional vector
+	A class defining an ideal gas
 	"""
-	def __init__(self,x,y):
+	def __init__(self,name,R):
 		"""
-		Returns a Vector Instance
+		Returns a Gas Instance
 		
 		Arguments:
-		x: x coordinate of the vector
-		y: y coordinate of the vector
+		name: string, name of the gas
+		R: float, specific gas constant
 		"""
-		self.x = x
-		self.y = y
+		self.name = name
+		self.R = R
 	
 	def __str__(self):
-		return '({},{})'.format(self.x,self.y)
+		return '{}, R={} J/kgK'.format(self.name,self.R)
 		
-	def __add__(self,v):
-		return Vector(self.x+v.x,self.y+v.y)	
-	
-	def magnitude(self):
-		return (self.x**2+self.y**2)**0.5
-		
-	def plot(self):
+	def density(self,P,T):
 		"""
-		Plots the vector
-		"""
-		plt.plot([0,self.x],[0,self.y])
+		Returns the density of the gas in kg/m3
 		
-
-
+		Arguments:
+		P: float, pressure in Pa
+		T: float, Temperature in K
+		"""
+		return P/self.R/T
+				
 if __name__ == '__main__':
-	help(Vector.plot)
-			
-	a = Vector(1,4)
-	b = Vector(3,2)
+	help(IdealGas.density)
 
-	c = a+b
-
+	a = IdealGas('air',287)	
 	print(a)
-	print(b)
-	print(c)
-	print(c.magnitude())
-	
-	a.plot()
-	b.plot()
-	c.plot()
-	plt.show()
+	print('rho = {:.3f} kg/m3'.format(a.density(101325,293.15)))

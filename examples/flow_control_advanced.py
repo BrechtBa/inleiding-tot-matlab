@@ -1,4 +1,3 @@
-# flow control advanced
 A = {'foo': 'bar',
      'spam': 'eggs',
 	 'bacon': 'spam'}
@@ -15,8 +14,7 @@ B = [1,2,3]
 C = [7,8,9]
 for b,c in zip(B,C):
 	print('b = {:.0f}, c = {:.3f}'.format(b,c))
-	
-	
+		
 # enumerate
 D = [1,11,111,1111]
 for i,d in enumerate(D):

@@ -1,4 +1,3 @@
-#variables
 # integer
 A = 1
 print(A)
@@ -14,7 +13,6 @@ print(C)
 # list
 D = [1,2,3]
 print(D)
-
 E = [1,'test',4,D]
 print(E)
 print(E[:2])

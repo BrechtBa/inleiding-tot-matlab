@@ -1,4 +1,3 @@
-# functions
 def spam(A,B,C=0,D=0):
 	val = 100*A+10*B+C+0.1*D
 	return val
@@ -11,5 +10,4 @@ print(E)
 
 F = spam(4,1,D=3,C=5)
 print(F)
-
 print(val)

@@ -1,6 +1,5 @@
-
 def test():
 	"""
 	Prints something a a test
 	"""
-	print('mymodule.submodule.test')
+	print('this is a test of the submodule')
