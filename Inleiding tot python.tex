@@ -8,12 +8,18 @@
 \usepackage{parskip}                    % Om paragrafen met een verticale spatie ipv horizontaal te starten
 \usepackage{listings}					% Om code weer te geven
 \usepackage{courier}
+\usepackage{textcomp}
 \usepackage[pdftex,                     % Om hyperlinks en metadata te hebben in het pdfdocument.
 			plainpages=false,
             pdfauthor={Brecht Baeten},
             pdftitle={Inleiding to Python}]{hyperref}
 
-\lstset{language=Python,basicstyle=\footnotesize\ttfamily,tabsize=4,breaklines=true,showstringspaces=false}
+\lstset{language=Python,
+        basicstyle=\footnotesize\ttfamily,
+        tabsize=4,
+        breaklines=true,
+        showstringspaces=false,
+        upquote=true}
 
 \title{Inleiding tot Python}
 \author{Brecht Baeten}
