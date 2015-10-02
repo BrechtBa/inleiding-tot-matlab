@@ -1,0 +1,88 @@
+% Dit werk is gelicenseerd onder de licentie Creative Commons Naamsvermelding-GelijkDelen 4.0 Internationaal. Ga naar http://creativecommons.org/licenses/by-sa/4.0/ om een kopie van de licentie te kunnen lezen.
+\documentclass[11pt,twoside]{article}
+
+\usepackage[margin=2.5cm]{geometry}     % Marges instellen
+\usepackage[dutch]{babel}               % Voor nederlandstalige hyphenatie (woordsplitsing)
+\usepackage{graphicx}         			% Om figuren te kunnen verwerken
+\usepackage[utf8]{inputenc}             % Om niet ascii karakters rechtstreeks te kunnen typen
+\usepackage{parskip}                    % Om paragrafen met een verticale spatie ipv horizontaal te starten
+\usepackage{listings}					% Om code weer te geven
+\usepackage{courier}
+\usepackage{textcomp}
+\usepackage[pdftex,                     % Om hyperlinks en metadata te hebben in het pdfdocument.
+			plainpages=false,
+            pdfauthor={Brecht Baeten},
+            pdftitle={Inleiding to Python}]{hyperref}
+
+\lstset{language=Matlab,
+        basicstyle=\footnotesize\ttfamily,
+        tabsize=4,
+        breaklines=true,
+        showstringspaces=false,
+        upquote=true}
+
+\title{Inleiding tot Matlab}
+\author{Brecht Baeten}
+
+\begin{document}
+
+	\maketitle
+
+	\section{Matlab voor ingenieurs}
+De broncode van deze tekst alsook alle voorbeelden kunnen worden gedownload via \url{https://github.com/BrechtBa/inleiding-tot-matlab/}.
+
+	\section{Command line}
+Wanneer Matlab gestart is kan je rechtstreeks commando's uitvoeren in de command line interface. Typ hier bijvoorbeeld:
+\begin{lstlisting}
+disp('Hello World!')
+\end{lstlisting}
+
+ 	\section{Scripts}
+Matlab code kan opgeslagen worden in eenvoudige tekst bestanden met de extentie "\textsf{.m}". Binnen de Matlab IDE zit een handige text editor specifiek ontworpen voor het schrijven van m-files.
+	
+ 	
+ 	\section{Functies}
+Matlab code kan opgeslagen worden in eenvoudige tekst bestanden met de extentie "\textsf{.m}". 
+Omdat het telkens opnieuw invoeren van commando's achter elkaar niet zo praktisch is, is het interessant om een reeks commando's op te slaan in een script en dit uit te voeren. Open een teksteditor en typ "\lstinline{print('Hello World!')}"\ en sla het bestand op als \textsf{hello\_world.py}. Om het bestand uit te voeren open je een console, navigeer naar de locatie waar je het bestand hebt opgeslagen, typ "\lstinline[language=bash]{python hello_world.py}"\ en druk op enter. Het resultaat is hetzelfde als daarnet.
+
+Python heeft een aantal interessante ingebouwde variabele types. Open een nieuw bestand, typ onderstaande commando's en sla het op als \textsf{variables.py}.
+\lstinputlisting{examples/variables.py}
+
+Voer het script ditmaal uit met het commando "\lstinline[language=bash]{python -i variables.py}". De "\lstinline[language=bash]{-i}"\ zorgt ervoor dat python na het uitvoeren van alle commando's in het script naar de interactieve console gaat. Alle reeds gedefinieerde variabelen zijn nu ook beschikbaar in de console. Typ bijvoorbeeld:
+\begin{lstlisting}
+E[3]
+\end{lstlisting}
+of:
+\begin{lstlisting}
+A+B
+\end{lstlisting}
+Door "\lstinline{Ctrl+Z}"\ in te geven kan je Python afsluiten en terugkeren naar de command line interface.
+
+Zoals te merken in het voorgaande voorbeeld is Python zeer flexibel met data types. Zo kunnen een \emph{Integer} en een \emph{Float} met elkaar opgeteld worden en kan een \emph{List} elementen met verschillende datatypes bevatten. Een zeer interessant data type is het \emph{Dictionary} of \emph{dict}. Hierin kunnen key / value paren worden opgeslagen en terug opgeroepen. Zowat elke Python variabele kan een \emph{Dictionary} key zijn wat dit type zeer flexibel maakt. Het is gewenst om even in te gaan op de manier van indexeren in Python. Een Python \emph{List} start bij index 0. Het laatste element kan je oproepen met de index -1, het voorlaatste met index -2, enz. Je kan een deel van de lijst opvragen met behulp van de "\lstinline{:}"\ operator, de subset loopt dan van de index voor de "\lstinline{:}"\ tot (niet tot en met) de index erna. Indien er geen index voor of achter de "\lstinline{:}"\ staat zal de subset starten of eindigen bij respectievelijk het eerste of het laatste element.
+
+Er moet even aandacht besteed worden aan de manier waarop variabelen in Python gebruikt worden. In Python zijn variabelen slechts namen die naar een bepaalde waarde verwijzen. Wanneer een variabele toegewezen wordt, wordt enkel de referentie naar de waarde toegewezen. In het voorbeeld hierboven zullen "\lstinline{print(F)}"\ en "\lstinline{print(G)}"\ hetzelfde resultaat geven. Hierboven wordt "\lstinline{H}"\ echter gedefinieerd als een nieuwe \emph{Dictionary} met dezelfde waarden als "\lstinline{F}". De commando's "\lstinline{print(F)}"\ en "\lstinline{print(H)}"\ zullen dus een verschillend resultaat hebben.
+
+Echt programmeren begint pas bij maken van lussen en voorwaarden: flow control. In python is dit zeer eenvoudig met behulp van "\lstinline{for}"\ lussen of "\lstinline{if else}"\ structuren:
+\lstinputlisting{examples/flow_control.py}
+
+In Python moet elk flow control element eindigen met een ":". De code binnen het element moet een tab inspringen. Dit zorgt voor een zekere leesbaarheid in de code. De "\lstinline{range(10)}"\ functie in de "\lstinline{for}"\ lus maakt een \emph{List} met waarden van 0 tot en met 9. De "\lstinline{.format(i)}"\ functie formatteert zijn inhoud op de plaats van de accolade's in de voorafgaande string. De format functie is eigenlijk een methode van het \emph{String} datatype en geeft een hele reeks formatteer opties. Even zoeken op het net leert je heel veel over zulke ingebouwde functies.
+
+Je kan over zowat elk datatype itereren. Een lus over een dictionary kan bijvoorbeeld op verschillende manieren. Ook itereren over verschillende variablen tegelijk is eenvoudig met de "\lstinline{zip()}"\ functie. Indien je itereert over een \emph{List} en de index van de variabelen wil gebruiken kan je de functie "\lstinline{enumerate()}"\ gebruiken:
+\lstinputlisting{examples/flow_control_advanced.py}
+
+Een set commando's die vaak op dezelfde manier gebruikt worden kan je groeperen in een functie. Een functie definieer je met het "\lstinline{def}"\ keyword, gevolgd door de functie naam, de argument namen tussen haakjes en een dubbelpunt. Argumenten kunnen verplicht of optioneel zijn. voor optionele argumenten moet een default waarde opgegeven worden in de functie definitie. Alle verplichte argumenten moeten ook voor de optionle komen in de functie definitie. Wanneer een functie veel optionele argumenten heeft is het gemakkellijk om deze via naam=waarde paren op te geven, de volgorde is dan niet meer van belang:
+\lstinputlisting{examples/functions.py}
+
+Variabelen die binnen een functie gedefinieerd zijn bestaan ook enkel in de functie namespace. Bovenstaande code geeft dus een error omdat \lstinline{val} enkel in de functie namespace gedefinieerd is, niet in de globale namespace. Functies kunnen wel gebruik maken van variabelen in de globale namespace maar niet omgekeerd. Wanneer de bovenstaande code runt krijg je dan ook de volgende foutmelding:
+\begin{lstlisting}[language=bash]
+Traceback (most recent call last):
+  File "C:\examples\functions.py", line 10, in <module>
+    print(val)
+NameError: name 'val' is not defined
+\end{lstlisting}
+
+
+
+Dit werk is gelicenseerd onder de licentie Creative Commons Naamsvermelding-GelijkDelen 4.0 Internationaal. Ga naar \url{http://creativecommons.org/licenses/by-sa/4.0/} om een kopie van de licentie te kunnen lezen.
+\vspace{1cm}
+\end{document}
