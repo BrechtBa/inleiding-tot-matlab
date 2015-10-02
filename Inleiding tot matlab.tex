@@ -38,17 +38,12 @@ disp('Hello World!')
 \end{lstlisting}
 
  	\section{Scripts}
-Matlab code kan opgeslagen worden in eenvoudige tekst bestanden met de extentie "\textsf{.m}". Binnen de Matlab IDE zit een handige text editor specifiek ontworpen voor het schrijven van m-files.
-	
- 	
- 	\section{Functies}
-Matlab code kan opgeslagen worden in eenvoudige tekst bestanden met de extentie "\textsf{.m}". 
-Omdat het telkens opnieuw invoeren van commando's achter elkaar niet zo praktisch is, is het interessant om een reeks commando's op te slaan in een script en dit uit te voeren. Open een teksteditor en typ "\lstinline{print('Hello World!')}"\ en sla het bestand op als \textsf{hello\_world.py}. Om het bestand uit te voeren open je een console, navigeer naar de locatie waar je het bestand hebt opgeslagen, typ "\lstinline[language=bash]{python hello_world.py}"\ en druk op enter. Het resultaat is hetzelfde als daarnet.
+Omdat het telkens opnieuw invoeren van commando's achter elkaar niet zo praktisch is, is het interessant om een reeks commando's op te slaan in een script en dit uit te voeren. Matlab code kan opgeslagen worden in tekst bestanden met de extentie "\textsf{.m}". Binnen de Matlab IDE zit een handige text editor specifiek ontworpen voor het schrijven van m-files. Open een de m-file editor en typ "\lstinline{disp('Hello World!')}"\ en sla het bestand op als \textsf{hello\_world.m}. Om het bestand uit te voeren kan je de naam van het bestand typen in de command line interface of op de \textsf{run} knop in de werkbalk van de editor klikken. Het resultaat is hetzelfde als daarnet.
 
-Python heeft een aantal interessante ingebouwde variabele types. Open een nieuw bestand, typ onderstaande commando's en sla het op als \textsf{variables.py}.
-\lstinputlisting{examples/variables.py}
+Python heeft een aantal ingebouwde variabele types. Open een nieuw bestand, typ onderstaande commando's en sla het op als \textsf{variables.m} en voer het uit.
+\lstinputlisting{examples/variables.m}
 
-Voer het script ditmaal uit met het commando "\lstinline[language=bash]{python -i variables.py}". De "\lstinline[language=bash]{-i}"\ zorgt ervoor dat python na het uitvoeren van alle commando's in het script naar de interactieve console gaat. Alle reeds gedefinieerde variabelen zijn nu ook beschikbaar in de console. Typ bijvoorbeeld:
+Alle reeds gedefinieerde variabelen zijn nu ook beschikbaar in de console. Typ bijvoorbeeld:
 \begin{lstlisting}
 E[3]
 \end{lstlisting}
@@ -56,30 +51,19 @@ of:
 \begin{lstlisting}
 A+B
 \end{lstlisting}
-Door "\lstinline{Ctrl+Z}"\ in te geven kan je Python afsluiten en terugkeren naar de command line interface.
 
-Zoals te merken in het voorgaande voorbeeld is Python zeer flexibel met data types. Zo kunnen een \emph{Integer} en een \emph{Float} met elkaar opgeteld worden en kan een \emph{List} elementen met verschillende datatypes bevatten. Een zeer interessant data type is het \emph{Dictionary} of \emph{dict}. Hierin kunnen key / value paren worden opgeslagen en terug opgeroepen. Zowat elke Python variabele kan een \emph{Dictionary} key zijn wat dit type zeer flexibel maakt. Het is gewenst om even in te gaan op de manier van indexeren in Python. Een Python \emph{List} start bij index 0. Het laatste element kan je oproepen met de index -1, het voorlaatste met index -2, enz. Je kan een deel van de lijst opvragen met behulp van de "\lstinline{:}"\ operator, de subset loopt dan van de index voor de "\lstinline{:}"\ tot (niet tot en met) de index erna. Indien er geen index voor of achter de "\lstinline{:}"\ staat zal de subset starten of eindigen bij respectievelijk het eerste of het laatste element.
+De grote kracht van Matlab zit in het werken met vectoren en matrices (Matlab komt van MATrix LABoratory). Vectoren kunnen enkel waarden van hetzelfde type bevatten. Een \emph{Cell array} daarentegen kan waarden van een verschillend type bevatten. De Matlab \emph{Struct} variabele is zeer interessant omdat deze kan gebruikt worden om verschillende soorten data gestructureerd te groeperen. In Matlab wordt elke variabele door zijn waarde gedefinieerd.
 
-Er moet even aandacht besteed worden aan de manier waarop variabelen in Python gebruikt worden. In Python zijn variabelen slechts namen die naar een bepaalde waarde verwijzen. Wanneer een variabele toegewezen wordt, wordt enkel de referentie naar de waarde toegewezen. In het voorbeeld hierboven zullen "\lstinline{print(F)}"\ en "\lstinline{print(G)}"\ hetzelfde resultaat geven. Hierboven wordt "\lstinline{H}"\ echter gedefinieerd als een nieuwe \emph{Dictionary} met dezelfde waarden als "\lstinline{F}". De commando's "\lstinline{print(F)}"\ en "\lstinline{print(H)}"\ zullen dus een verschillend resultaat hebben.
+Scripts kunnen in Matlab alleen uitgevoerd worden indien ze in de Matlab current folder staan of als ze in een folder die tot het matlab zoekpad behoort staan. Met behulp van het \emph{Current Folder} venster kan je binnen Matlab browsen naar een andere folder, dit kan ook met het "\lstinline{cd()}"\ commando. Met behulp dan het "\lstinline{addpath()}"\ commando kan je een bepaalde forlder, waarin bijvoorbeeld een aantal veel voorkomende functies staan, aan het matlab path toevoegen. Zo worden deze functies beschikbaar.
 
-Echt programmeren begint pas bij maken van lussen en voorwaarden: flow control. In python is dit zeer eenvoudig met behulp van "\lstinline{for}"\ lussen of "\lstinline{if else}"\ structuren:
-\lstinputlisting{examples/flow_control.py}
+Echt programmeren begint pas bij maken van lussen en voorwaarden: flow control. In Matlab is dit zeer eenvoudig met behulp van "\lstinline{for}"\ lussen of "\lstinline{if else}"\ structuren:
+\lstinputlisting{examples/flow_control.m} In Matlab moet elke "\lstinline{for}"\ lussen of "\lstinline{if else}"\ constructie eindigen op een "\lstinline{end}"\ commando.
+Het "\lstinline{1:10}"\ commando in de "\lstinline{for}"\ lus maakt een \emph{Vector} met waarden van 0 tot en met 9. De "\lstinline{sprintf('%f is even',i)}"\ functie formatteert zijn argumenten op de plaats van de "\lstinline{%f}"\ in de format string al floating point numbers. Er zijn verschillende mogelijkheden om getallen te formateren, even zoeken in de help functie leert je heel veel over zulke ingebouwde functies.
 
-In Python moet elk flow control element eindigen met een ":". De code binnen het element moet een tab inspringen. Dit zorgt voor een zekere leesbaarheid in de code. De "\lstinline{range(10)}"\ functie in de "\lstinline{for}"\ lus maakt een \emph{List} met waarden van 0 tot en met 9. De "\lstinline{.format(i)}"\ functie formatteert zijn inhoud op de plaats van de accolade's in de voorafgaande string. De format functie is eigenlijk een methode van het \emph{String} datatype en geeft een hele reeks formatteer opties. Even zoeken op het net leert je heel veel over zulke ingebouwde functies.
+	\section{Functies}
+Een set commando's die vaak op dezelfde manier gebruikt worden kan je groeperen in een functie. Een functie definieer je met het "\lstinline{function}"\ keyword, gevolgd door de output argumenten, een gelijkheidsteken, de functie naam en de argument namen tussen haakjes op het einde van een functie hoort zoals gewoonlijk een "\lstinline{end}". Functies moeten binnen Matlab in een apparte m-file met dezelfde naam als de functie worden opgeslagen.
+\lstinputlisting{examples/functions.m}
 
-Je kan over zowat elk datatype itereren. Een lus over een dictionary kan bijvoorbeeld op verschillende manieren. Ook itereren over verschillende variablen tegelijk is eenvoudig met de "\lstinline{zip()}"\ functie. Indien je itereert over een \emph{List} en de index van de variabelen wil gebruiken kan je de functie "\lstinline{enumerate()}"\ gebruiken:
-\lstinputlisting{examples/flow_control_advanced.py}
-
-Een set commando's die vaak op dezelfde manier gebruikt worden kan je groeperen in een functie. Een functie definieer je met het "\lstinline{def}"\ keyword, gevolgd door de functie naam, de argument namen tussen haakjes en een dubbelpunt. Argumenten kunnen verplicht of optioneel zijn. voor optionele argumenten moet een default waarde opgegeven worden in de functie definitie. Alle verplichte argumenten moeten ook voor de optionle komen in de functie definitie. Wanneer een functie veel optionele argumenten heeft is het gemakkellijk om deze via naam=waarde paren op te geven, de volgorde is dan niet meer van belang:
-\lstinputlisting{examples/functions.py}
-
-Variabelen die binnen een functie gedefinieerd zijn bestaan ook enkel in de functie namespace. Bovenstaande code geeft dus een error omdat \lstinline{val} enkel in de functie namespace gedefinieerd is, niet in de globale namespace. Functies kunnen wel gebruik maken van variabelen in de globale namespace maar niet omgekeerd. Wanneer de bovenstaande code runt krijg je dan ook de volgende foutmelding:
-\begin{lstlisting}[language=bash]
-Traceback (most recent call last):
-  File "C:\examples\functions.py", line 10, in <module>
-    print(val)
-NameError: name 'val' is not defined
-\end{lstlisting}
 
 
 
