@@ -28,7 +28,7 @@
 
 	\maketitle
 
-	\section{Matlab voor ingenieurs}
+	\section{Inleiding}
 De broncode van deze tekst alsook alle voorbeelden kunnen worden gedownload via \url{https://github.com/BrechtBa/inleiding-tot-matlab/}.
 
 	\section{Command line}
@@ -40,12 +40,12 @@ disp('Hello World!')
  	\section{Scripts}
 Omdat het telkens opnieuw invoeren van commando's achter elkaar niet zo praktisch is, is het interessant om een reeks commando's op te slaan in een script en dit uit te voeren. Matlab code kan opgeslagen worden in tekst bestanden met de extentie "\textsf{.m}". Binnen de Matlab IDE zit een handige text editor specifiek ontworpen voor het schrijven van m-files. Open een de m-file editor en typ "\lstinline{disp('Hello World!')}"\ en sla het bestand op als \textsf{hello\_world.m}. Om het bestand uit te voeren kan je de naam van het bestand typen in de command line interface of op de \textsf{run} knop in de werkbalk van de editor klikken. Het resultaat is hetzelfde als daarnet.
 
-Python heeft een aantal ingebouwde variabele types. Open een nieuw bestand, typ onderstaande commando's en sla het op als \textsf{variables.m} en voer het uit.
+Matlab heeft een aantal ingebouwde variabele types. Open een nieuw bestand, typ onderstaande commando's en sla het op als \textsf{variables.m} en voer het uit.
 \lstinputlisting{examples/variables.m}
 
 Alle reeds gedefinieerde variabelen zijn nu ook beschikbaar in de console. Typ bijvoorbeeld:
 \begin{lstlisting}
-E[3]
+E(3)
 \end{lstlisting}
 of:
 \begin{lstlisting}
@@ -62,10 +62,26 @@ Het "\lstinline{1:10}"\ commando in de "\lstinline{for}"\ lus maakt een \emph{Ve
 
 	\section{Functies}
 Een set commando's die vaak op dezelfde manier gebruikt worden kan je groeperen in een functie. Een functie definieer je met het "\lstinline{function}"\ keyword, gevolgd door de output argumenten, een gelijkheidsteken, de functie naam en de argument namen tussen haakjes op het einde van een functie hoort zoals gewoonlijk een "\lstinline{end}". Functies moeten binnen Matlab in een apparte m-file met dezelfde naam als de functie worden opgeslagen.
-\lstinputlisting{examples/functions.m}
+\lstinputlisting{examples/spam.m}
+
+De functie kan nu worden gebruikt als "\lstinline{A = spam(1,2,3,4)}"\
+
+Onmiddellijk na de definitie volgt de documentatie van de functie als commentaar "\lstinline{%}". Deze wordt weergegeven indien de de "\lstinline{help spam}"\ functie wordt opgeroepen. Het is een goede gewoonte om hier steeds te schijven wat de functie doet, wat ze returnt, wat de argumenten betekenen en welk datatype de argumenten moeten zijn.
+
+Matlab beschikt over een zeer groot arsenaal van ingebouwde functies die rechtstreeks beschikbaar zijn. Deze zijn ook zeer goed gedocumenteerd in de help functie die kan opgeroepen woorden door op \emph{F1} te duwen. De ingebouwde zoekfunctie werkt ook zeer goed.
 
 
 
+
+\vspace{2cm}
+
+\null
+\vfill
+\includegraphics[height=0.3cm]{fig/cc}
+\includegraphics[height=0.3cm]{fig/by}
+\includegraphics[height=0.3cm]{fig/sa}
+\quad \the\year\ Brecht Baeten
+\vspace{0.5cm}
 
 Dit werk is gelicenseerd onder de licentie Creative Commons Naamsvermelding-GelijkDelen 4.0 Internationaal. Ga naar \url{http://creativecommons.org/licenses/by-sa/4.0/} om een kopie van de licentie te kunnen lezen.
 \vspace{1cm}
