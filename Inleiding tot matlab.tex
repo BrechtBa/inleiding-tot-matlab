@@ -3,23 +3,27 @@
 
 \usepackage[margin=2.5cm]{geometry}     % Marges instellen
 \usepackage[dutch]{babel}               % Voor nederlandstalige hyphenatie (woordsplitsing)
-\usepackage{graphicx}         			% Om figuren te kunnen verwerken
-\usepackage[utf8]{inputenc}             % Om niet ascii karakters rechtstreeks te kunnen typen
-\usepackage{parskip}                    % Om paragrafen met een verticale spatie ipv horizontaal te starten
-\usepackage{listings}					% Om code weer te geven
-\usepackage{courier}
+\usepackage{graphicx}         			% Figuren verwerken
+\usepackage[utf8]{inputenc}             % Niet ascii karakters rechtstreeks typen
+\usepackage{parskip}                    % Paragrafen met een verticale spatie
+\usepackage{listings}					% Code weergeven
+\usepackage{courier}					% Code lettertype
 \usepackage{textcomp}
+\usepackage{xcolor}                     % Kleuren
 \usepackage[pdftex,                     % Om hyperlinks en metadata te hebben in het pdfdocument.
 			plainpages=false,
             pdfauthor={Brecht Baeten},
-            pdftitle={Inleiding to Python}]{hyperref}
+            pdftitle={Inleiding tot Matlab}]{hyperref}
 
 \lstset{language=Matlab,
         basicstyle=\footnotesize\ttfamily,
         tabsize=4,
         breaklines=true,
         showstringspaces=false,
-        upquote=true}
+        upquote=true,
+        xleftmargin=1cm,
+        xrightmargin=1cm,
+        backgroundcolor=\color{black!5!white}}
 
 \title{Inleiding tot Matlab}
 \author{Brecht Baeten}
@@ -57,21 +61,41 @@ De grote kracht van Matlab zit in het werken met vectoren en matrices (Matlab ko
 Scripts kunnen in Matlab alleen uitgevoerd worden indien ze in de Matlab current folder staan of als ze in een folder die tot het matlab zoekpad behoort staan. Met behulp van het \emph{Current Folder} venster kan je binnen Matlab browsen naar een andere folder, dit kan ook met het "\lstinline{cd()}"\ commando. Met behulp dan het "\lstinline{addpath()}"\ commando met als argument een string kan je een bepaalde folder, waarin bijvoorbeeld een aantal veel voorkomende functies staan, aan het matlab path toevoegen. Zo worden deze functies beschikbaar.
 
 Echt programmeren begint pas bij maken van lussen en voorwaarden: flow control. In Matlab is dit zeer eenvoudig met behulp van "\lstinline{for}"\ lussen of "\lstinline{if else}"\ structuren:
-\lstinputlisting{examples/flow_control.m} In Matlab moet elke "\lstinline{for}"\ lussen of "\lstinline{if else}"\ constructie eindigen op een "\lstinline{end}"\ commando.
+\lstinputlisting{examples/flow_control.m}
+
+In Matlab moet elke "\lstinline{for}"\ lussen of "\lstinline{if else}"\ constructie eindigen op een "\lstinline{end}"\ commando.
 Het "\lstinline{1:10}"\ commando in de "\lstinline{for}"\ lus maakt een \emph{Vector} met waarden van 0 tot en met 9. De "\lstinline{sprintf('%f is even',i)}"\ functie formatteert zijn argumenten op de plaats van de "\lstinline{%f}"\ in de format string al floating point numbers. Er zijn verschillende mogelijkheden om getallen te formateren, even zoeken in de help functie leert je heel veel over zulke ingebouwde functies.
+
+Over arrays en structures itereren kan ook in Matlab. Om dit te doen defineer je een tijdelijke index variabel waarover je itereert, en je roept het element hodende bij die index op:
+\lstinputlisting{examples/flow_control_advanced.m}
 
 	\section{Functies}
 Een set commando's die vaak op dezelfde manier gebruikt worden kan je groeperen in een functie. Een functie definieer je met het "\lstinline{function}"\ keyword, gevolgd door de output argumenten, een gelijkheidsteken, de functie naam en de argument namen tussen haakjes op het einde van een functie hoort zoals gewoonlijk een "\lstinline{end}". Functies moeten binnen Matlab in een apparte m-file met dezelfde naam als de functie worden opgeslagen.
 \lstinputlisting{examples/spam.m}
 
-De functie kan nu worden gebruikt als "\lstinline{A = spam(1,2,3,4)}"\
+De functie kan nu worden gebruikt als "\lstinline{A = spam(1,2,3,4)}"\. Variabelen die binnen een functie gedefinieerd zijn bestaan ook enkel in de functie namespace. Onderstaande code geeft dus een error omdat \lstinline{val} enkel in de functie namespace gedefinieerd is, niet in de globale namespace. Wanneer de onderstaande code runt krijg je dan ook een foutmelding. Matlab geeft wel meteen aan waar de fout is opgetreden wat handig is om code te debuggen.
+\lstinputlisting{examples/functions.m}
+
+\begin{lstlisting}[language=matlab]
+error: 'val' undefined
+\end{lstlisting}
 
 Onmiddellijk na de definitie volgt de documentatie van de functie als commentaar "\lstinline{%}". Deze wordt weergegeven indien de de "\lstinline{help spam}"\ functie wordt opgeroepen. Het is een goede gewoonte om hier steeds te schijven wat de functie doet, wat ze returnt, wat de argumenten betekenen en welk datatype de argumenten moeten zijn.
 
 Matlab beschikt over een zeer groot arsenaal van ingebouwde functies die rechtstreeks beschikbaar zijn. Deze zijn ook zeer goed gedocumenteerd in de help functie die kan opgeroepen woorden door op \emph{F1} te duwen. De ingebouwde zoekfunctie werkt ook zeer goed.
 
+	\section{Vectoren en plotten} 
+In Matlab kunnen vectoren met behulp van ingebouwde functies gecreëerd worden. Je kan elk element van een vector appart definieren, om de performantie te vergroten is het wel belangrijk dat je op voorhand de vector initializeerd met bijvoorbeeld allemaal nullen. Veel functies in Matlab kunnen echter ook met vectoren werken.
 
+Functies om vectoren te plotten zijn ook ingebouwd in Matlab. Matlab kan ook gebruik maken van \LaTeX\ om aslabels en legendes weer te geven. In het onderstaande voorbeeld worden een aantal vectoren opgebouwd en geplot.
+\lstinputlisting{examples/vectors_plotting.m}
 
+\begin{figure}[ht]
+	\centering
+	%\includegraphics{examples/sinus_cosinus}
+	\caption{Plot voorbeeld}
+	\label{fig:sinus_cosinus}
+\end{figure}
 
 \vspace{2cm}
 
