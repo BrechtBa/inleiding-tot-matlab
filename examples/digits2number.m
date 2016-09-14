@@ -1,4 +1,4 @@
-function val = spam(A,B,C,D)
+function val = digits2number(A,B,C,D)
 	% returns a a number as if the arguments were different digits in the number
 	%
 	% Parameters:
